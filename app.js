@@ -11,14 +11,14 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
-  res.send("Hi i'm a chatbot!")
+  res.send("Hi I'm a chatbot")
 })
 
 app.get('/webhook/', function(req, res) {
-  if (req.query['hub.verify_token'] === "mdp") {
-    res.send(req.query['bug.challenge']);
-  }
-  res.send("wrong token");
+	if (req.query['hub.verify_token'] === "chatbot") {
+		res.send(req.query['hub.challenge'])
+	}
+	res.send("Wrong token")
 })
 
 app.listen(app.get('port'), function(){
