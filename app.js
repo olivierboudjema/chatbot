@@ -1,4 +1,5 @@
 'use strict'
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
@@ -7,14 +8,19 @@ const app = express()
 
 app.set('port', (process.env.PORT || 5000))
 
-app.use(bodyParser.urlencoded({extended:false}))
+// Allows us to process the data
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+// ROUTES
+
 app.get('/', function(req, res) {
-  res.send("Hi I'm a chatbot!")
+	res.send("Hi I am a chatbot")
 })
 
-let token = "EAABwYHYpXLoBAMkfZChCwLazs3e2sNJQaqZCLiYdi7MZCTcGNv9qKXCz1f1I7SY7NZCM5KcKwfHQ7cCfcdl1b93MQKU8A9AscLHuQifzWLvESsE7iP1Tc4EFDMG8EKLHzCcHwZCwwoB7M4RuZClFnHUsSBgfl4qRmANmhbKd3digZDZD";
+let token = "EAABwYHYpXLoBAMkfZChCwLazs3e2sNJQaqZCLiYdi7MZCTcGNv9qKXCz1f1I7SY7NZCM5KcKwfHQ7cCfcdl1b93MQKU8A9AscLHuQifzWLvESsE7iP1Tc4EFDMG8EKLHzCcHwZCwwoB7M4RuZClFnHUsSBgfl4qRmANmhbKd3digZDZD"
+
+// Facebook
 
 app.get('/webhook/', function(req, res) {
 	if (req.query['hub.verify_token'] === "chatbot") {
@@ -55,6 +61,6 @@ function sendText(sender, text) {
 	})
 }
 
-app.listen(app.get('port'), function(){
-  console.log("running: port")
+app.listen(app.get('port'), function() {
+	console.log("running: port")
 })
