@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot!!!")
+	console.log("teeeeeeeeeeeeeeeeeest 1");
 })
 
 let token = "EAABwYHYpXLoBAFZC3y9prCzNlL6In7ZCBIrxL3JSbYj1Gq42ZCqmPz2ZAPhpZBUvZB8OlbFyNl0TWaPppZAqqv1IZBSZBR3ZBMRNGIIy0xsxN7dEZCJZAHvflNc6GAnZBgzj6J9U7oc28orIKcJLYZBOSptpYePBtwD8WG5qm8yK7ohdcvpgZDZD"
@@ -23,6 +24,7 @@ let token = "EAABwYHYpXLoBAFZC3y9prCzNlL6In7ZCBIrxL3JSbYj1Gq42ZCqmPz2ZAPhpZBUvZB
 // Facebook
 
 app.get('/webhook/', function(req, res) {
+	console.log("teeeeeeeeeeeeeeeeeest 2");
 	if (req.query['hub.verify_token'] === "chatbot") {
 		res.send(req.query['hub.challenge'])
 	}
@@ -30,6 +32,7 @@ app.get('/webhook/', function(req, res) {
 })
 
 app.post('/webhook/', function(req, res) {
+	console.log("teeeeeeeeeeeeeeeeeest 3");
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
@@ -44,7 +47,7 @@ app.post('/webhook/', function(req, res) {
 
 function sendText(sender, text) {
 	let messageData = {text: text}
-	console.log("teeeeeeeeeeeeeeeeeest 1");
+	console.log("teeeeeeeeeeeeeeeeeest 4");
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
