@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 // ROUTES
 
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!")
+	res.send("Hi I am a chatbot!!!")
 })
 
 let token = "EAABwYHYpXLoBAFZC3y9prCzNlL6In7ZCBIrxL3JSbYj1Gq42ZCqmPz2ZAPhpZBUvZB8OlbFyNl0TWaPppZAqqv1IZBSZBR3ZBMRNGIIy0xsxN7dEZCJZAHvflNc6GAnZBgzj6J9U7oc28orIKcJLYZBOSptpYePBtwD8WG5qm8yK7ohdcvpgZDZD"
@@ -44,9 +44,8 @@ app.post('/webhook/', function(req, res) {
 
 function sendText(sender, text) {
 	let messageData = {text: text}
-  console.log("hiiiii");
 	request({
-		uri: 'https://graph.facebook.com/v2.6/me/messages',
+		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
 		method: "POST",
 		json: {
