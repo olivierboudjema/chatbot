@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 
 // ROUTES
 let compteur = 0;
-app.get('/test', function(req, res) {
+app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot!!!");
-	console.log("teeeeeeeeeeeeeeeeeest " + compteur);
+	console.log("caca " + compteur);
 	compteur++;
-})
+});
 
 //let access_token = "EAABwYHYpXLoBAHjdMpnud6mghexpMxPWPN5scNGTlYbLXOTRDxLWHThkJo3i0ZCZCWvQBfhTuYZAxyRRbWRsBUEqFI4kH71n4f4olvjPUDbhethAEcvejWjZCQWeWm9i5si5m6lXHYbtBouD4hZBD2KIbJ6IhV39CEe3EoBxPGgZDZD"
 
@@ -36,6 +36,8 @@ app.get('/webhook', function(req, res) {
     res.sendStatus(403);
   }
 });
+
+console.log("pipi");
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
