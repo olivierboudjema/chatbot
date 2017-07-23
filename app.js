@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 
 app.get('/webhook', function(req, res) {
 	console.log("teeeeeeeeeeeeeeeeeest 2");
-	if (req.query['hub.verify_token'] === "abc") {
+	if (req.query['hub.verify_token'] === "") {
 		res.send(req.query['hub.challenge'])
 	}
 	res.send("Wrong token")
