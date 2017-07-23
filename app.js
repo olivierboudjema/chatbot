@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // ROUTES
 let compteur = 0;
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!!!!!");
+	res.send("Hi I am a chatbot!");
 	console.log("teeeeeeeeeeeeeeeeeest " + compteur);
 	compteur++;
 })
