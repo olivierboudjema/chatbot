@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 // ROUTES
 
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!!!")
+	res.send("Hi I am a chatbot!!!!!")
 	console.log("teeeeeeeeeeeeeeeeeest 1");
 })
 
@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
 
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === <chatbot>) {
+      req.query['hub.verify_token'] === "chatbot") {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
