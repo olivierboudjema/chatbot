@@ -1,22 +1,23 @@
-'use strict'
+'use strict';
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
+const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
 
-const app = express()
+const app = express();
 
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 5000));
 
 // Allows us to process the data
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // ROUTES
-
+let compteur = 0;
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!!!!!")
-	console.log("teeeeeeeeeeeeeeeeeest 1");
+	res.send("Hi I am a chatbot!!!!!");
+	console.log("teeeeeeeeeeeeeeeeeest " + compteur);
+	compteur++;
 })
 
 //let access_token = "EAABwYHYpXLoBAHjdMpnud6mghexpMxPWPN5scNGTlYbLXOTRDxLWHThkJo3i0ZCZCWvQBfhTuYZAxyRRbWRsBUEqFI4kH71n4f4olvjPUDbhethAEcvejWjZCQWeWm9i5si5m6lXHYbtBouD4hZBD2KIbJ6IhV39CEe3EoBxPGgZDZD"
@@ -137,5 +138,5 @@ function callSendAPI(messageData) {
 }
 
 app.listen(app.get('port'), function() {
-	console.log("running: port")
+	console.log("running: port");
 })
