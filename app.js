@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
 	console.log("teeeeeeeeeeeeeeeeeest 1");
 })
 
-let token = "EAABwYHYpXLoBAFZC3y9prCzNlL6In7ZCBIrxL3JSbYj1Gq42ZCqmPz2ZAPhpZBUvZB8OlbFyNl0TWaPppZAqqv1IZBSZBR3ZBMRNGIIy0xsxN7dEZCJZAHvflNc6GAnZBgzj6J9U7oc28orIKcJLYZBOSptpYePBtwD8WG5qm8yK7ohdcvpgZDZD"
+let token = ""
 
 // Facebook
 
