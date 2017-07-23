@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // ROUTES
 let compteur = 0;
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!");
+	res.send("Hi I am a chatbot!!!");
 	console.log("teeeeeeeeeeeeeeeeeest " + compteur);
 	compteur++;
 })
@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === "chatbot") {
+      req.query['hub.verify_token'] === "olboubou") {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
@@ -37,7 +37,7 @@ app.get('/webhook', function(req, res) {
 
 app.post('/webhook', function (req, res) {
   var data = req.body;
-
+	console.log("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
   // Make sure this is a page subscription
   if (data.object === 'page') {
 
@@ -65,10 +65,7 @@ app.post('/webhook', function (req, res) {
   }
 });
 
-function receivedMessage(event) {
-  // Putting a stub for now, we'll expand it in the following steps
-  console.log("Message data: ", event.message);
-}
+
 
 function receivedMessage(event) {
   var senderID = event.sender.id;
@@ -103,6 +100,7 @@ function receivedMessage(event) {
 }
 
 function sendTextMessage(recipientId, messageText) {
+	console.log("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
   var messageData = {
     recipient: {
       id: recipientId
@@ -116,6 +114,7 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 function callSendAPI(messageData) {
+	console.log("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: "EAABwYHYpXLoBAHjdMpnud6mghexpMxPWPN5scNGTlYbLXOTRDxLWHThkJo3i0ZCZCWvQBfhTuYZAxyRRbWRsBUEqFI4kH71n4f4olvjPUDbhethAEcvejWjZCQWeWm9i5si5m6lXHYbtBouD4hZBD2KIbJ6IhV39CEe3EoBxPGgZDZD" },
