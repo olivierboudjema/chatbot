@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 
 app.get('/webhook', function(req, res) {
 	console.log("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-	console.log(req.query['hub.verify_token']);
+	console.log(req.query['hub.verify_token'].toString());
 	compteur = compteur + 1000;
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === "abc") {
