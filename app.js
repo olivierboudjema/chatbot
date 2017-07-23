@@ -25,6 +25,8 @@ app.get('/', function(req, res) {
 // Facebook
 
 app.get('/webhook', function(req, res) {
+	console.log("yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	compteur = compteur + 1000;
   if (req.query['hub.mode'] === 'subscribe' &&
       req.query['hub.verify_token'] === "olboubou") {
     console.log("Validating webhook");
