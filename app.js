@@ -47,7 +47,7 @@ function sendText(sender, text) {
 	console.log("teeeeeeeeeeeeeeeeeest 4");
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token: "EAABwYHYpXLoBAPzoe9g6zIrXVBftR9pCEMrijvtoZBg3yhch0ILsX5PQNjhbzxvK6GToqZBXx9gfGmZBRLXptEOcXZCC9GsjZCmnN1aNuS5e35QoRMNEETOPQBpoKmfbJMr7zkmBZAozuT6BOyct2VFEO9R0e94UPw5Tm1jpcZC3wZDZD"},
+		qs : {access_token: "EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD"},
 		method: "POST",
 		json: {
 			recipient: {id: sender},
