@@ -14,14 +14,15 @@ app.use(bodyParser.json());
 
 // ROUTES
 let compteur = 0;
+
 app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot!!!");
-	console.log("caca " + compteur);
+	console.log("compteur " + compteur);
 	compteur++;
 });
 
 app.get('/webhook', function(req, res) {
-	console.log(req.query['hub.verify_token']);
+	console.log("token : " + req.query['hub.verify_token']);
 	if (req.query['hub.verify_token'] === "abc") {
 		res.send(req.query['hub.challenge'])
 	}
@@ -44,7 +45,6 @@ app.post('/webhook', function(req, res) {
 
 function sendText(sender, text) {
 	let messageData = {text: text}
-	console.log("teeeeeeeeeeeeeeeeeest 4");
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: "EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD"},
