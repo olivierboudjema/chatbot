@@ -6,6 +6,14 @@ const request = require('request');
 
 const app = express();
 
+var fs = require('fs');
+
+require.extensions['.txt'] = function (module, confidentialite) {
+    module.exports = fs.readFileSync(confidentialite, 'utf8');
+};
+
+var words = require("./confidentialite.txt");
+
 let uppercase = require('./uppercase.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -21,6 +29,10 @@ app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot!!!");
 	console.log("compteur " + compteur);
 	compteur++;
+});
+
+app.get('/confidentialite', function(req, res) {
+	res.send(words);
 });
 
 app.get('/webhook', function(req, res) {
