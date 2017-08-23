@@ -1,4 +1,6 @@
 
+'use strict';
+
 let toUpperCaseFonction = function(text){
   let text2 = ""
   var nb_car = text.length;
