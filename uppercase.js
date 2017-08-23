@@ -10,7 +10,7 @@ let toUpperCaseFonction = function(text){
       text2 = text2 + tableau[i].toUpperCase();
     }
     else {
-      text2 = text2 + tableau[i];
+      text2 = text2 + tableau[i].toLowerCase();
     }
   }
   return text2;
