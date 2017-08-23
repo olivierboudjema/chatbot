@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 let compteur = 0;
 
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!");
+	res.send("Hi I am a chatbot!!");
 	console.log("compteur " + compteur);
 	compteur++;
 });
