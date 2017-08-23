@@ -9,7 +9,7 @@ let toUpperCaseFonction = function(text){
   console.log(tableau);
   for (i=0; i<nb_car; i++) {
     if(i%2 == 0)  {
-      text2 = text2 + tableau[i].toUpperCase();
+      text2 = text2 + tableau[i].toUpperCase() + "!!!";
     }
     else {
       text2 = text2 + tableau[i].toLowerCase();
