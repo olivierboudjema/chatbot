@@ -17,7 +17,7 @@ var words = require("./confidentialite.txt");
 let uppercase = require('./uppercase.js');
 let query = require('./query.js');
 
-query.queryFunction();
+//query.queryFunction();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 let compteur = 0;
 
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot!!!");
+	res.send("Hi I am a chatbot");
 	console.log("compteur " + compteur);
 	compteur++;
 });
