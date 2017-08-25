@@ -17,8 +17,6 @@ var words = require("./confidentialite.txt");
 let uppercase = require('./uppercase.js');
 let query = require('./query.js');
 
-//query.queryFunction();
-
 app.set('port', (process.env.PORT || 5000));
 
 // Allows us to process the data
@@ -47,16 +45,18 @@ app.get('/webhook', function(req, res) {
 })
 
 
-
 app.post('/webhook', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
 		let sender = event.sender.id
+
+		//query.queryFunction(sender);
+		
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
-			sendText(sender, "" + text.substring(0, 100))
+			sendText(sender, "" + sender.toString())
 		}
 	}
 	res.sendStatus(200)
