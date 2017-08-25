@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 let compteur = 0;
 
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot");
+	res.send("Hi I am a chatbot!");
 	console.log("compteur " + compteur);
 	compteur++;
 });
@@ -46,6 +46,8 @@ app.get('/webhook', function(req, res) {
 	res.send("Wrong token")
 })
 
+var FB = require('fb');
+FB.setAccessToken('EAACEdEose0cBAHw67iBEGKpgiZAZBXqmAYEsT1lQw6QDYm0oqZCt5LRR0siWFN9DZAOzhZBIWDa21N2sZAgu3U3xsw41EUgwXIlfFtTxJNF7Iq73bAJHp3w51k7OK0oJN4F3U8vvdktMh9cQytd7uYWAcsph07DFeoN9fEs2UBCLyHDjbe5k58Sagc2WI50vsZD');
 
 
 app.post('/webhook', function(req, res) {
@@ -56,7 +58,15 @@ app.post('/webhook', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
-			sendText(sender, "" + text.substring(0, 100))
+			FB.api(
+			  '2111089705785301', //   id.toString() // 10207039856412582 // 2111089705785301
+			  'GET',
+			  {	"fields":"id,first_name, gender" },
+			  function(response) {
+			  	console.log(response.id + "  " + response.first_name + " " +  response.gender);	
+			  	sendText(sender, "" + "fb api") 
+			  });
+			//sendText(sender, "" + text.substring(0, 100))
 		}
 	}
 	res.sendStatus(200)
