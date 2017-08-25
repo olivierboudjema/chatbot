@@ -44,6 +44,7 @@ app.get('/webhook', function(req, res) {
 	res.send("Wrong token")
 })
 
+//query.queryFunction(561460630644364);
 
 app.post('/webhook', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -51,12 +52,24 @@ app.post('/webhook', function(req, res) {
 		let event = messaging_events[i]
 		let sender = event.sender.id
 
-		//query.queryFunction(sender);
 		
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
-			sendText(sender, "" + sender.toString())
+			
+			var FB = require('fb');
+			FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
+
+			var idstr = id.toString();
+
+			FB.api(
+			  sender, //   id.toString() // 10207039856412582 // 2111089705785301
+			  'GET',
+			  {	 },
+			  function(response) {
+			  	console.log(response.id + " " + response.first_name + " " +  response.gender);	 
+			  	sendText(sender, "" + response.first_name)
+			  });
 		}
 	}
 	res.sendStatus(200)
