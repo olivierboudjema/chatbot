@@ -46,8 +46,6 @@ app.get('/webhook', function(req, res) {
 	res.send("Wrong token")
 })
 
-var FB = require('fb');
-FB.setAccessToken('EAACEdEose0cBAHw67iBEGKpgiZAZBXqmAYEsT1lQw6QDYm0oqZCt5LRR0siWFN9DZAOzhZBIWDa21N2sZAgu3U3xsw41EUgwXIlfFtTxJNF7Iq73bAJHp3w51k7OK0oJN4F3U8vvdktMh9cQytd7uYWAcsph07DFeoN9fEs2UBCLyHDjbe5k58Sagc2WI50vsZD');
 
 
 app.post('/webhook', function(req, res) {
@@ -57,8 +55,7 @@ app.post('/webhook', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			text = uppercase.toUpperCaseFonction(text) + "!";
-			
+			text = uppercase.toUpperCaseFonction(text);
 			sendText(sender, "" + text.substring(0, 100))
 		}
 	}

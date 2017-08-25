@@ -24,7 +24,7 @@ module.exports = {
 	}
 
 
-queryFunction("dd");
+//queryFunction("dd");
 
 
 //https://graph.facebook.com/v2.10/10207039856412582/?fields=name&access_token=EAACEdEose0cBAHw67iBEGKpgiZAZBXqmAYEsT1lQw6QDYm0oqZCt5LRR0siWFN9DZAOzhZBIWDa21N2sZAgu3U3xsw41EUgwXIlfFtTxJNF7Iq73bAJHp3w51k7OK0oJN4F3U8vvdktMh9cQytd7uYWAcsph07DFeoN9fEs2UBCLyHDjbe5k58Sagc2WI50vsZD
