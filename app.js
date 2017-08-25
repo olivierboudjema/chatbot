@@ -57,16 +57,9 @@ app.post('/webhook', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			text = uppercase.toUpperCaseFonction(text);
-			FB.api(
-			  '2111089705785301', //   id.toString() // 10207039856412582 // 2111089705785301
-			  'GET',
-			  {	"fields":"id,first_name, gender" },
-			  function(response) {
-			  	console.log(response.id + "  " + response.first_name + " " +  response.gender);	
-			  	sendText(sender, "" + "fb api") 
-			  });
-			//sendText(sender, "" + text.substring(0, 100))
+			text = uppercase.toUpperCaseFonction(text) + "!";
+			
+			sendText(sender, "" + text.substring(0, 100))
 		}
 	}
 	res.sendStatus(200)
