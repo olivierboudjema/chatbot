@@ -56,7 +56,7 @@ app.post('/webhook', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
-			
+			sendText(sender, "" + "nieeeee")
 			var FB = require('fb');
 			FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
 
@@ -68,7 +68,7 @@ app.post('/webhook', function(req, res) {
 			  {	 },
 			  function(response) {
 			  	console.log(response.id + " " + response.first_name + " " +  response.gender);	 
-			  	sendText(sender, "" + response.first_name)
+			  	sendText(sender, "" + response.first_name.toString())
 			  });
 		}
 	}
