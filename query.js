@@ -10,22 +10,25 @@ let queryFunction = function(id){
 	FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
 
 	var idstr = id.toString();
+	var info;
 
 	FB.api(
 	  idstr, //   id.toString() // 10207039856412582 // 2111089705785301
 	  'GET',
 	  {	 },
 	  function(response) {
-	  	console.log(response.id + " " + response.first_name + " " +  response.gender);	 
+	  	//console.log(response.id + " " + response.first_name + " " +  response.gender);	 
+	  	info = (response.id + " " + response.first_name + " " +  response.gender).toString();
 	  });
 
+	return info;
 }
 
 module.exports = {
 	 queryFunction : queryFunction
 	}
 
-//queryFunction(10207039856412582);
+//console.log(queryFunction(10207039856412582));
 
 //https://graph.facebook.com/v2.10/10207039856412582/?fields=name&access_token=EAACEdEose0cBADaq5D9Fy13NaZBaXZBOKnUGuvrezuJqM4wNzRCJ3kzCxQRisVNXoBrykZB1qZCvZAgZCumPsZARFiOSYOJG31VrwHQaZAIZBBQm3STF1p2D0gvxpZBScBOi5qP5ZBIouZCOgGNRBfrB4nXUebiTxHhQrmzhMzmeWLOLJrTiH9eughkXEamlgZBZBxnzZCjK8p8qy50ZBgZDZD
 
