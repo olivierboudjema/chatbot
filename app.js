@@ -3,6 +3,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const FB = require('fb');
+FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
+
 
 const app = express();
 
@@ -45,8 +48,6 @@ app.get('/webhook', function(req, res) {
 	res.send("Wrong token")
 })
 
-var FB = require('fb');
-FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
 
 var info = "Rob";
 
