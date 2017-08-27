@@ -55,8 +55,8 @@ var getThirdPartyID = function (thirdPartyIDCallback) {
 
     return FB.api("561460630644364", //   id.toString() // 10207039856412582 // 2111089705785301
 	  'GET',
-	  {	 }, 
-	  function (userData) { 
+	  {	 },
+	  function (userData) {
       //console.log("Your Facebook ThirdPartyId is: " + userData.first_name);
       thirdPartyIDCallback(userData.first_name);
     });
@@ -77,12 +77,12 @@ app.post('/webhook', function(req, res) {
 		let sender = event.sender.id
 
 		//query.queryFunction(sender);
-		
+
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
-			sendText(sender, "" + info.toString())
+			sendText(sender, "" + "Hi " + info.toString() + "!")
 		}
 	}
 	res.sendStatus(200)
