@@ -82,7 +82,12 @@ app.post('/webhook', function(req, res) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
-			sendText(sender, "" + "Hi " + info.toString() + "!!!")
+      if(compteur = 0) {
+			     sendText(sender, "" + "Hi " + info.toString() + "!")
+      }
+      else {
+        sendText(sender, "" + text.substring(0, 100))
+      }
 		}
 	}
 	res.sendStatus(200)
