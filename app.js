@@ -20,6 +20,7 @@ var words = require("./confidentialite.txt");
 let uppercase = require('./uppercase.js');
 //let query = require('./query.js');
 let callbackquery = require('./callbackquery.js');
+var users = require('./users.json');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -82,10 +83,13 @@ app.post('/webhook', function(req, res) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
-      if(compteur = 0) {
-			     sendText(sender, "" + "Hi " + info.toString() + "!")
+      for (var i in users.user) {
+          if(users.user[i].id == event.sender.id){
+            sendText(sender, "" + "Hi " + info.toString() + "!!!")
+          }
       }
       else {
+        users.user.push({  "id": users.user[i].id, "first_name":users.user[i].first_name, "last_name": users.user[i].last_name })
         sendText(sender, "" + text.substring(0, 100))
       }
 		}
