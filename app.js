@@ -87,7 +87,7 @@ app.post('/webhook', function(req, res) {
           if(users.user[j].id == event.sender.id){
             sendText(sender, "" + text.substring(0, 100));
           }
-          sendText(sender, users.user[i].first_name);
+          sendText(sender, users.user[j].first_name);
       }
       if(compteur == 0) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!")
