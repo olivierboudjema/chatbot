@@ -85,14 +85,14 @@ app.post('/webhook', function(req, res) {
 			//sendText(sender, "" + text.substring(0, 100))
       for (var j in users.user) {
           if(users.user[j].id == event.sender.id){
-            sendText(sender, "" + text.substring(0, 100));            
+            sendText(sender, "" + text.substring(0, 100));
             compteur++;
           }
-          sendText(sender, users.user[i].first_name));
+          //sendText(sender, users.user[i].first_name));
       }
       if(compteur <= 2) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!")
-        users.user.push({  "id": users.user[j].id, "first_name":users.user[j].first_name, "last_name": users.user[j].last_name })
+        users.user.push({"id": users.user[j].id, "first_name":users.user[j].first_name, "last_name": users.user[j].last_name})
         compteur = 0;
         compteur++;
       }
