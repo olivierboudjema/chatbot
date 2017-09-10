@@ -34,7 +34,7 @@ let compteur = 0;
 app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot!");
 	console.log("compteur " + compteur);
-	compteur++;
+	//compteur++;
 });
 
 app.get('/confidentialite', function(req, res) {
@@ -86,13 +86,12 @@ app.post('/webhook', function(req, res) {
       for (var j in users.user) {
           if(users.user[j].id == event.sender.id){
             sendText(sender, "" + text.substring(0, 100));
-            compteur++;
           }
           //sendText(sender, users.user[i].first_name));
       }
-      if(compteur <= 2) {
+      if(compteur == 0) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!")
-        users.user.push({"id": users.user[j].id, "first_name":users.user[j].first_name, "last_name": users.user[j].last_name})
+        users.user.push({"id": event.sender.id, "first_name": event.sender.first_name, "last_name": event.sender.last_name})
         compteur = 0;
         compteur++;
       }
