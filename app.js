@@ -18,7 +18,7 @@ require.extensions['.txt'] = function (module, confidentialite) {
 var words = require("./confidentialite.txt");
 
 let uppercase = require('./uppercase.js');
-let query = require('./query.js');
+//let query = require('./query.js');
 let callbackquery = require('./callbackquery.js');
 
 app.set('port', (process.env.PORT || 5000));
@@ -82,7 +82,7 @@ app.post('/webhook', function(req, res) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
-			sendText(sender, "" + "Hi " + info.toString() + "!")
+			sendText(sender, "" + "Hi " + info.toString() + "!!!")
 		}
 	}
 	res.sendStatus(200)
