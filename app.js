@@ -83,15 +83,16 @@ app.post('/webhook', function(req, res) {
 			let text = event.message.text
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
-      for (var i in users.user) {
-          if(users.user[i].id == event.sender.id){
+      for (var j in users.user) {
+          if(users.user[j].id == event.sender.id){
             sendText(sender, "" + "Hi " + info.toString() + "!!!")
           }
+          else {
+            users.user.push({  "id": users.user[j].id, "first_name":users.user[j].first_name, "last_name": users.user[j].last_name })
+            sendText(sender, "" + text.substring(0, 100))
+          }
       }
-      else {
-        users.user.push({  "id": users.user[i].id, "first_name":users.user[i].first_name, "last_name": users.user[i].last_name })
-        sendText(sender, "" + text.substring(0, 100))
-      }
+
 		}
 	}
 	res.sendStatus(200)
