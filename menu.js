@@ -3,7 +3,7 @@
 var users = require('./users.json');
 var fs = require('fs');
 
-fs.readFile('users.json',function(err,content){
+fs.readFile('./users.json',function(err,content){
   if(err) throw err;
   var parseJson = JSON.parse(content);
   // for (var i=0; i <11 ; i++){
