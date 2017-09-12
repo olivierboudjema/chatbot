@@ -81,22 +81,29 @@ app.post('/webhook', function(req, res) {
 
 		if (event.message && event.message.text) {
 			let text = event.message.text
+      console.log(event);
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
       for (var j in users.user) {
           if(users.user[j].id == event.sender.id){
             sendText(sender, "" + text.substring(0, 100));
           }
-          sendText(sender, users.user[j].first_name);
+          sendText(sender, users.user[j].id + " " + users.user[j].first_name + " " + users.user[j].last_name);
       }
+      
       if(compteur == 0) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!")
-        users.user.push({"id": event.sender.id, "first_name": event.sender.first_name, "last_name": event.sender.last_name})
+        fs.readFile('users.json',function(err,content){
+          if(err) throw err;
+          var parseJson = JSON.parse(content);
+          parseJson.user.push({"id": event.sender.id, "first_name": event.sender.first_name, "last_name": event.sender.last_name})
+          fs.writeFile('users.json',JSON.stringify(parseJson),function(err){
+            if(err) throw err;
+          })
+        })
         compteur = 0;
         compteur++;
       }
-
-
 		}
 	}
 	res.sendStatus(200)

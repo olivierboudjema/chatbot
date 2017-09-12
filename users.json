@@ -1,6 +1,1 @@
-{
-    "user": [
-        {  "id": "112", "first_name":"Eddy", "last_name": "Malou" },
-        {  "id": "113", "first_name":"Franck", "last_name": "Ribery" }
-    ]
- }
+{"user":[{"id":"112","first_name":"Eddy","last_name":"Malou"},{"id":"113","first_name":"Franck","last_name":"Ribery"}]}
