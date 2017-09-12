@@ -81,7 +81,7 @@ app.post('/webhook', function(req, res) {
 
 		if (event.message && event.message.text) {
 			let text = event.message.text
-      console.log(event);
+      console.log(event.sender.id);
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
       for (var j in users.user) {
@@ -90,7 +90,7 @@ app.post('/webhook', function(req, res) {
           }
           sendText(sender, users.user[j].id + " " + users.user[j].first_name + " " + users.user[j].last_name);
       }
-      
+
       if(compteur == 0) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!")
         fs.readFile('users.json',function(err,content){
