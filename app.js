@@ -91,13 +91,13 @@ app.post('/webhook', function(req, res) {
           sendText(sender, users.user[j].id + " " + users.user[j].first_name + " " + users.user[j].last_name);
       }
 
-  
+
       fs.readFile('./users.json',function(err,content){
         if(err) throw err;
         var parseJson = JSON.parse(content);
          parseJson.user.push({  "id": "123", "first_name":"Franck5", "last_name": "Ribery" })
         fs.writeFile('users.json',JSON.stringify(parseJson),function(err){
-          if(err) throw err console.log(err);
+          if(err) throw err;
         })
       })
 
