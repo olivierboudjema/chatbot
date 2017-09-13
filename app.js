@@ -96,7 +96,7 @@ app.post('/webhook', function(req, res) {
         console.log("eee");
         var parseJson = JSON.parse(content);
         parseJson.user.push({"id": event.sender.id, "first_name": event.sender.first_name, "last_name": event.sender.last_name})
-        fs.writeFile('users.json',JSON.stringify(parseJson),function(err){
+        fs.writeFile('./users.json',JSON.stringify(parseJson),function(err){
           if(err) throw err;
         })
       })
