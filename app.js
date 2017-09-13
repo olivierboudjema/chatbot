@@ -52,9 +52,9 @@ app.get('/webhook', function(req, res) {
 
 var info = "Rob";
 
-var getThirdPartyID = function (thirdPartyIDCallback) {
+var getThirdPartyID = function (thirdPartyIDCallback, id) {
 
-    return FB.api("561460630644364", //   id.toString() // 10207039856412582 // 2111089705785301
+    return FB.api(id, //   id.toString() // 10207039856412582 // 2111089705785301
 	  'GET',
 	  {	 },
 	  function (userData) {
@@ -69,7 +69,7 @@ var handleThirdPartyID = function(thirdPartyID){
   console.log(thirdPartyID);
 }
 
-getThirdPartyID(handleThirdPartyID);
+
 
 app.post('/webhook', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -81,38 +81,15 @@ app.post('/webhook', function(req, res) {
 
 		if (event.message && event.message.text) {
 			let text = event.message.text
-      console.log(event.sender.id);
+      getThirdPartyID(handleThirdPartyID, event.sender.id);
+      //console.log(event.sender.id);
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
-      for (var j in users.user) {
-          if(users.user[j].id == event.sender.id){
-            sendText(sender, "" + text.substring(0, 100));
-          }
-          sendText(sender, users.user[j].id + " " + users.user[j].first_name + " " + users.user[j].last_name);
-      }
-
-
-      fs.readFile('./users.json',function(err,content){
-        if(err) throw err;
-        var parseJson = JSON.parse(content);
-         parseJson.user.push({  "id": "123", "first_name":"Franck5", "last_name": "Ribery" })
-        fs.writeFile('users.json',JSON.stringify(parseJson),function(err){
-          if(err) throw err;
-        })
-      })
 
       if(compteur == 0) {
-        sendText(sender, "" + "Hi " + info.toString() + "!!!")
-        fs.readFile('users.json',function(err,content){
-          if(err) throw err;
-          var parseJson = JSON.parse(content);
-          parseJson.user.push({  "id": "123", "first_name":"Franck5", "last_name": "Ribery" })
-          fs.writeFile('users.json',JSON.stringify(parseJson),function(err){
-            if(err) throw err;
-          })
-        })
+        sendText(sender, "" + "Hi " + info.toString() + "!!!")        
         compteur = 0;
-        compteur++;
+        //compteur++;
       }
 		}
 	}
