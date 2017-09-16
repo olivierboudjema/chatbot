@@ -52,6 +52,7 @@ app.get('/webhook', function(req, res) {
 
 var info = "anonymous";
 var timebefore;
+var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mode Mocking SpongeBob \n 3: Game highter/lower \n 3: Suggest new functions \n ------  \n Copyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
 
@@ -82,10 +83,11 @@ app.post('/webhook', function(req, res) {
 
 		if (event.message && event.message.text) {
 			let text = event.message.text
+      let text_normal = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
       console.log(event.timestamp);
 			text = uppercase.toUpperCaseFonction(text);
-			//sendText(sender, "" + text.substring(0, 100))
+			//sendText(sender, "" + text.substring(0, 100)) // mod gogole
 
       var timenow = event.timestamp;
       var dateA = new Date(timenow);
@@ -94,10 +96,10 @@ app.post('/webhook', function(req, res) {
       console.log(dayRelativeDifference);
 
       if(dayRelativeDifference > 1) {
-        sendText(sender, "" + "Hi " + info.toString() + "!!!")
+        sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
       }
       else {
-        sendText(sender, "" + text.substring(0, 100));
+        sendText(sender, "" + text_normal + menu_text);
       }
       timebefore = event.timestamp;
 		}
