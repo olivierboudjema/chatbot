@@ -52,7 +52,7 @@ app.get('/webhook', function(req, res) {
 
 var info = "anonymous";
 var timebefore;
-var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Game highter/lower \n 4: Cool places map \n 5: Suggest new functions\n ------  \nCopyright © 2017 Olboubou ";
+var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Game higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
 
