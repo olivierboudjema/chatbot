@@ -50,8 +50,8 @@ app.get('/webhook', function(req, res) {
 })
 
 
-var info = "Rob";
-var time = 0;
+var info = "anonymous";
+var timebefore;
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
 
@@ -83,16 +83,23 @@ app.post('/webhook', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
-      console.log(event);
-      time = event.sender.timestamp;
+      console.log(event.timestamp);
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
 
-      if(compteur == 0 ) {
+      var timenow = event.timestamp;
+      var dateA = new Date(timenow);
+      var dateB = new Date(timebefore);
+      var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - time.getHours()*60 - time.getMinutes();
+      console.log(dayRelativeDifference);
+
+      if(dayRelativeDifference > 1) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!")
-        compteur = 0;
-        //compteur++;
       }
+      else {
+        sendText(sender, "" + text.substring(0, 100));
+      }
+      timebefore = event.timestamp;
 		}
 	}
 	res.sendStatus(200)
