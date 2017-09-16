@@ -90,7 +90,7 @@ app.post('/webhook', function(req, res) {
       var timenow = event.timestamp;
       var dateA = new Date(timenow);
       var dateB = new Date(timebefore);
-      var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - time.getMinutes();
+      var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
       console.log(dayRelativeDifference);
 
       if(dayRelativeDifference > 1) {
