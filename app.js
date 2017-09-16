@@ -83,7 +83,7 @@ app.post('/webhook', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
-      console.log(event.sender.timestamp);
+      console.log(event);
       time = event.sender.timestamp;
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
