@@ -51,6 +51,7 @@ app.get('/webhook', function(req, res) {
 
 
 var info = "Rob";
+var time = 0;
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
 
@@ -82,12 +83,13 @@ app.post('/webhook', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
-      //console.log(event.sender.id);
+      console.log(event.sender.timestamp);
+      time = event.sender.timestamp;
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100))
 
-      if(compteur == 0) {
-        sendText(sender, "" + "Hi " + info.toString() + "!!!")        
+      if(compteur == 0 ) {
+        sendText(sender, "" + "Hi " + info.toString() + "!!!")
         compteur = 0;
         //compteur++;
       }
