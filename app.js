@@ -52,7 +52,7 @@ app.get('/webhook', function(req, res) {
 
 var info = "anonymous";
 var timebefore;
-var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mode Mocking SpongeBob \n 3: Game highter/lower \n 3: Suggest new functions \n ------  \n Copyright © 2017 Olboubou ";
+var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mode Mocking SpongeBob \n 3: Game highter/lower \n 3: Suggest new functions \n ------  \nCopyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
 
@@ -95,7 +95,7 @@ app.post('/webhook', function(req, res) {
       var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
       console.log(dayRelativeDifference);
 
-      if(dayRelativeDifference > 1) {
+      if(dayRelativeDifference > 5) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
       }
       else {
