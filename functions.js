@@ -12,6 +12,6 @@ let mapFunction = function(){
 
 
 module.exports = {
-	 infosFunction : infosFunction
+	 infosFunction : infosFunction,
    mapFunction : mapFunction
 	}
