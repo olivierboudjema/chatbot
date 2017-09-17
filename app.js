@@ -16,6 +16,7 @@ require.extensions['.txt'] = function (module, confidentialite) {
 
 var words = require("./confidentialite.txt");
 let uppercase = require('./uppercase.js');
+let functions = require('./functions.js');
 var token = require('./token.txt');
 //let query = require('./query.js');
 
@@ -48,7 +49,7 @@ app.get('/webhook', function(req, res) {
 
 var info = "anonymous";
 var timebefore;
-var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Game higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
+var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Play higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
     return FB.api(id, //   id.toString() // 10207039856412582 // 2111089705785301
@@ -87,11 +88,15 @@ app.post('/webhook', function(req, res) {
       var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
       console.log("dayRelativeDifference: " + dayRelativeDifference);
 
-      if(dayRelativeDifference > 5) {
-        sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
-      }
+      if(text_normal = "1") {  sendText(sender, "" + functions.infosFunction()); }
+
       else {
-        sendText(sender, "" + text_normal + menu_text);
+        if(dayRelativeDifference > 5) {
+          sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
+        }
+        else {      
+          sendText(sender, "" + text_normal + menu_text);
+        }
       }
       timebefore = event.timestamp;
 		}
