@@ -1,7 +1,8 @@
 'use strict';
+var token = require('./token.txt');
 
 var FB = require('fb');
-FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
+FB.setAccessToken(token);
 
 var info = "Rob";
 var id = 1;
