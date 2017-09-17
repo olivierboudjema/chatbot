@@ -53,6 +53,7 @@ var timebefore;
 var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Game higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
+
     return FB.api(id, //   id.toString() // 10207039856412582 // 2111089705785301
 	  'GET',
 	  {	 },
