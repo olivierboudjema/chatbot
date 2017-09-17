@@ -65,7 +65,7 @@ var getThirdPartyID = function (thirdPartyIDCallback, id) {
 var handleThirdPartyID = function(thirdPartyID){
   // do something with thirdPartyID
   info = thirdPartyID
-  console.log(thirdPartyID);
+  console.log("thirdPartyID : " + thirdPartyID);
 }
 
 app.post('/webhook', function(req, res) {
@@ -79,7 +79,7 @@ app.post('/webhook', function(req, res) {
 			let text = event.message.text
       let text_normal = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
-      console.log(event.timestamp);
+      //console.log(event.timestamp);
 			text = uppercase.toUpperCaseFonction(text);
 			//sendText(sender, "" + text.substring(0, 100)) // mod gogole
 
@@ -87,7 +87,7 @@ app.post('/webhook', function(req, res) {
       var dateA = new Date(timenow);
       var dateB = new Date(timebefore);
       var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
-      console.log(dayRelativeDifference);
+      console.log("dayRelativeDifference: "dayRelativeDifference);
 
       if(dayRelativeDifference > 5) {
         sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
