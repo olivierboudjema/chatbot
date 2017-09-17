@@ -6,7 +6,7 @@ const request = require('request');
 var FB = require('fb');
 var fs = require('fs');
 
-FB.setAccessToken('EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD');
+FB.setAccessToken(token);
 
 const app = express();
 
@@ -18,7 +18,10 @@ var words = require("./confidentialite.txt");
 let uppercase = require('./uppercase.js');
 let callbackquery = require('./callbackquery.js');
 var users = require('./users.json');
+var token = require('./../token.txt');
 //let query = require('./query.js');
+
+console.log(token);
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -31,7 +34,7 @@ let compteur = 0;
 
 app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot!");
-	console.log("compteur " + compteur);
+	//console.log("compteur " + compteur);
 	//compteur++;
 });
 
@@ -105,7 +108,7 @@ function sendText(sender, text) {
 	let messageData = {text: text}
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token: "EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD"},
+		qs : {access_token: token},
 		method: "POST",
 		json: {
 			recipient: {id: sender},
