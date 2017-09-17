@@ -88,13 +88,13 @@ app.post('/webhook', function(req, res) {
       var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
       console.log("dayRelativeDifference: " + dayRelativeDifference);
 
-      if(text_normal = "1") {  sendText(sender, "" + functions.infosFunction()); }
+      if(text_normal == "1") {  sendText(sender, "" + functions.infosFunction()); }
 
       else {
         if(dayRelativeDifference > 5) {
           sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
         }
-        else {      
+        else {
           sendText(sender, "" + text_normal + menu_text);
         }
       }
