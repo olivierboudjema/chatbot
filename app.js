@@ -18,10 +18,8 @@ var words = require("./confidentialite.txt");
 let uppercase = require('./uppercase.js');
 let callbackquery = require('./callbackquery.js');
 var users = require('./users.json');
-var token = require('./../token.txt');
+var token = require('./token.txt');
 //let query = require('./query.js');
-
-console.log(token);
 
 app.set('port', (process.env.PORT || 5000));
 
