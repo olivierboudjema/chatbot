@@ -88,7 +88,7 @@ app.post('/webhook', function(req, res) {
       var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
       console.log("dayRelativeDifference: " + dayRelativeDifference);
 
-      switch (text_normal) {
+      switch (Number(text_normal)) {
           case 0:
               sendText(sender, "" + "Are you stupid ?!");
               break;
