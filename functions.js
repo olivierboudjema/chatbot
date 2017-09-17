@@ -5,8 +5,13 @@ let infosFunction = function(){
   return text;
 }
 
+let mapFunction = function(){
+  var text = "Improvements weeks to weeks!\n https://www.google.com/maps/d/edit?mid=1e_SwsHjFXKhq97HYK0B-BjXotkw&ll=48.85528684451266%2C2.340592640090904&z=13"
+  return text;
+}
 
 
 module.exports = {
 	 infosFunction : infosFunction
+   mapFunction : mapFunction
 	}

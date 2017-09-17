@@ -90,6 +90,8 @@ app.post('/webhook', function(req, res) {
 
       if(text_normal == "1") {  sendText(sender, "" + functions.infosFunction()); }
 
+      if(text_normal == "4") {  sendText(sender, "" + functions.mapFunction()); }
+
       else {
         if(dayRelativeDifference > 5) {
           sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
