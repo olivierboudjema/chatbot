@@ -88,20 +88,43 @@ app.post('/webhook', function(req, res) {
       var dayRelativeDifference =   dateA.getHours()*60 + dateA.getMinutes() - dateB.getHours()*60 - dateB.getMinutes();
       console.log("dayRelativeDifference: " + dayRelativeDifference);
 
-      if(text_normal == "1") {  sendText(sender, "" + functions.infosFunction()); }
-
-      if(text_normal == "4") {  sendText(sender, "" + functions.mapFunction()); }
-
-      if(text_normal == "2") {  sendText(sender, "" + text.substring(0, 100)); }
-
-      else {
-        if(dayRelativeDifference > 5) {
-          sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
-        }
-        else {
-          sendText(sender, "" + text_normal + menu_text);
-        }
+      switch (text_normal) {
+          case 0:
+              sendText(sender, "" + "Are you stupid ?!");
+              break;
+          case 1:
+              sendText(sender, "" + functions.infosFunction());
+              break;
+          case 2:
+              sendText(sender, "" + text.substring(0, 100));
+              break;
+          case 4:
+              sendText(sender, "" + functions.mapFunction());
+              break;
+          default:
+              if(dayRelativeDifference > 5) {
+                sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
+              }
+              else {
+                sendText(sender, "" + text_normal + menu_text);
+              }
+              break;
       }
+
+      // if(text_normal == "1") {  sendText(sender, "" + functions.infosFunction()); }
+      //
+      // if(text_normal == "4") {  sendText(sender, "" + functions.mapFunction()); }
+      //
+      // if(text_normal == "2") {  sendText(sender, "" + text.substring(0, 100)); }
+      //
+      // else {
+      //   if(dayRelativeDifference > 5) {
+      //     sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
+      //   }
+      //   else {
+      //     sendText(sender, "" + text_normal + menu_text);
+      //   }
+      // }
       timebefore = event.timestamp;
 		}
 	}
