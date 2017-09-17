@@ -1,4 +1,3 @@
-
 'use strict';
 
 let toUpperCaseFonction = function(text){
@@ -21,4 +20,3 @@ let toUpperCaseFonction = function(text){
 module.exports = {
 	 toUpperCaseFonction : toUpperCaseFonction
 	}
-
