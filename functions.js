@@ -10,8 +10,14 @@ let mapFunction = function(){
   return text;
 }
 
+let ideaFunction = function(){
+  var text = "Just write here your are idea :) \n Thx in advance! It will be read very soon."
+  return text;
+}
+
 
 module.exports = {
 	 infosFunction : infosFunction,
-   mapFunction : mapFunction
+   mapFunction : mapFunction,
+   ideaFunction : ideaFunction
 	}

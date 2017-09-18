@@ -101,6 +101,9 @@ app.post('/webhook', function(req, res) {
           case "4":
               sendText(sender, "" + functions.mapFunction());
               break;
+          case "5":
+              sendText(sender, "" + functions.ideaFunction());
+              break;
           default:
               if(dayRelativeDifference > 5) {
                 sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
