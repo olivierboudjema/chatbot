@@ -49,7 +49,7 @@ app.get('/webhook', function(req, res) {
 
 var info = "anonymous";
 var timebefore;
-var menu_text = "\n\n ----Menu---- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Play higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
+var menu_text = "\n\n ----Menu---- \n 1: Infos \n 2: Cool places map \n 3: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
     return FB.api(id, //   id.toString() // 10207039856412582 // 2111089705785301
@@ -94,12 +94,9 @@ app.post('/webhook', function(req, res) {
               sendText(sender, "" + functions.infosFunction());
               break;
           case "2":
-              sendText(sender, "" + text.substring(0, 100));
-              break;
-          case "4":
               sendText(sender, "" + functions.mapFunction());
               break;
-          case "5":
+          case "3":
               sendText(sender, "" + functions.ideaFunction());
               break;
           default:
