@@ -39,8 +39,7 @@ console.log(nb_rng);
 module.exports = {
 	 infosFunction : infosFunction,
    mapFunction : mapFunction,
-   ideaFunction : ideaFunction,
-   gameHLFunction : gameHLFunction
+   ideaFunction : ideaFunction   
 	}
 
 gameHLFunction("text", "time");
