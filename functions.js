@@ -22,12 +22,7 @@ let  random = function(low, high) {
 var nb_rng = Math.round(random(0,100));
 console.log(nb_rng);
 
-let gameHLFunction = function(text, time){
 
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
 
   rl.question('What do you think of Node.js? ', (answer) => {
     var nb_user = Number($answer);

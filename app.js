@@ -80,7 +80,7 @@ app.post('/webhook', function(req, res) {
       getThirdPartyID(handleThirdPartyID, event.sender.id);
 			text = uppercase.toUpperCaseFonction(text);
 
-      functions.gameHLFunction(text, time);
+      
 
       var timenow = event.timestamp;
       var dateA = new Date(timenow);
