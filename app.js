@@ -49,7 +49,7 @@ app.get('/webhook', function(req, res) {
 
 var info = "anonymous";
 var timebefore;
-var menu_text = "\n\n ---Menu--- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Play higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
+var menu_text = "\n\n ----Menu---- \n 1: Infos \n 2: Mocking SpongeBob \n 3: Play higher/lower \n 4: Cool places map \n 5: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
 
 var getThirdPartyID = function (thirdPartyIDCallback, id) {
     return FB.api(id, //   id.toString() // 10207039856412582 // 2111089705785301
@@ -73,14 +73,14 @@ app.post('/webhook', function(req, res) {
 		let event = messaging_events[i]
 		let sender = event.sender.id
 
-		//query.queryFunction(sender);
+
 		if (event.message && event.message.text) {
 			let text = event.message.text
       let text_normal = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
-      //console.log(event.timestamp);
 			text = uppercase.toUpperCaseFonction(text);
-			//sendText(sender, "" + text.substring(0, 100)) // mod gogole
+
+      functions.gameHLFunction(text, time);
 
       var timenow = event.timestamp;
       var dateA = new Date(timenow);
@@ -90,7 +90,7 @@ app.post('/webhook', function(req, res) {
 
       switch (text_normal) {
           case "0":
-              sendText(sender, "" + "Are you stupid ?!");
+              sendText(sender, "" + "You found a secret function ! Send password <cookiesforever> to Olivier to receive your surprise!");
               break;
           case "1":
               sendText(sender, "" + functions.infosFunction());
@@ -113,21 +113,6 @@ app.post('/webhook', function(req, res) {
               }
               break;
       }
-
-      // if(text_normal == "1") {  sendText(sender, "" + functions.infosFunction()); }
-      //
-      // if(text_normal == "4") {  sendText(sender, "" + functions.mapFunction()); }
-      //
-      // if(text_normal == "2") {  sendText(sender, "" + text.substring(0, 100)); }
-      //
-      // else {
-      //   if(dayRelativeDifference > 5) {
-      //     sendText(sender, "" + "Hi " + info.toString() + "!!!" + menu_text)
-      //   }
-      //   else {
-      //     sendText(sender, "" + text_normal + menu_text);
-      //   }
-      // }
       timebefore = event.timestamp;
 		}
 	}
