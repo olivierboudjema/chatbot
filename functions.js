@@ -16,30 +16,8 @@ let ideaFunction = function(){
   return text;
 }
 
-let  random = function(low, high) {
-    return Math.random() * (high - low) + low;
-}
-var nb_rng = Math.round(random(0,100));
-console.log(nb_rng);
-
-
-
-  rl.question('What do you think of Node.js? ', (answer) => {
-    var nb_user = Number($answer);
-    if(nb_user > nb_rng) { console.log("more!");  }
-    if(nb_user > nb_rng) { console.log("less!");  }
-    if(nb_user == nb_rng) { console.log("Well played!");  }
-    // TODO: Log the answer in a database
-    console.log(`Thank you for your valuable feedback: ${answer}`);
-    rl.close();
-  });
-  return text;
-}
-
 module.exports = {
 	 infosFunction : infosFunction,
    mapFunction : mapFunction,
-   ideaFunction : ideaFunction   
-	}
-
-gameHLFunction("text", "time");
+   ideaFunction : ideaFunction
+ 	}
