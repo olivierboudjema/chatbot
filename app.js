@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+<<<<<<< HEAD
 var FB = require('fb');
 var fs = require('fs');
 
@@ -19,6 +20,12 @@ let uppercase = require('./uppercase.js');
 let functions = require('./functions.js');
 var token = require('./token.txt');
 //let query = require('./query.js');
+=======
+
+const app = express();
+
+let uppercase = require('./uppercase.js');
+>>>>>>> pb/master
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -30,6 +37,7 @@ app.use(bodyParser.json());
 let compteur = 0;
 
 app.get('/', function(req, res) {
+<<<<<<< HEAD
 	res.send("Hi I am a chatbot!");
 	//console.log("compteur " + compteur);
 	//compteur++;
@@ -37,6 +45,11 @@ app.get('/', function(req, res) {
 
 app.get('/confidentialite', function(req, res) {
 	res.send(words);
+=======
+	res.send("Hi I am a chatbot!!!");
+	console.log("compteur " + compteur);
+	compteur++;
+>>>>>>> pb/master
 });
 
 app.get('/webhook', function(req, res) {
@@ -47,6 +60,7 @@ app.get('/webhook', function(req, res) {
 	res.send("Wrong token")
 })
 
+<<<<<<< HEAD
 var info = "anonymous";
 var timebefore;
 var menu_text = "\n\n ----Menu---- \n 1: Infos \n 2: Cool places map \n 3: Suggest new functions\n -----------  \nCopyright © 2017 Olboubou ";
@@ -67,6 +81,8 @@ var handleThirdPartyID = function(thirdPartyID){
   console.log("thirdPartyID : " + thirdPartyID);
 }
 
+=======
+>>>>>>> pb/master
 app.post('/webhook', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
@@ -76,6 +92,7 @@ app.post('/webhook', function(req, res) {
 
 		if (event.message && event.message.text) {
 			let text = event.message.text
+<<<<<<< HEAD
       let text_normal = event.message.text
       getThirdPartyID(handleThirdPartyID, event.sender.id);
 			text = uppercase.toUpperCaseFonction(text);
@@ -109,6 +126,10 @@ app.post('/webhook', function(req, res) {
               break;
       }
       timebefore = event.timestamp;
+=======
+			text = uppercase.toUpperCaseFonction(text);
+			sendText(sender, "" + text.substring(0, 100))
+>>>>>>> pb/master
 		}
 	}
 	res.sendStatus(200)
@@ -118,7 +139,7 @@ function sendText(sender, text) {
 	let messageData = {text: text}
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token: token},
+		qs : {access_token: "EAABwYHYpXLoBADa7tEh4mdUZAf9x1Y3wOgRZC3fxNZBjWS9YhGr8TeTTyDx9zKk3EhrbybV9H5DNexAz5DEI6w0WgKb5wrjIj1tL8aTWBKXJHBCdpl4h4tUxWtFNKmgJGMyJW3dpShgzKnos5aUy9qZAd87T4yEIasYBHexC8wZDZD"},
 		method: "POST",
 		json: {
 			recipient: {id: sender},
