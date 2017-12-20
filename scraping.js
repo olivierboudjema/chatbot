@@ -12,7 +12,7 @@ request("https://www.facebook.com/olivier.boudjema/friends?lst=1165367417%3A1165
 
   var balise = '._6a'
 
-  var test = $('._6-6');
+  var test = $('._39g5');
   var testtexte = test.text();
   console.log(testtexte);
 
