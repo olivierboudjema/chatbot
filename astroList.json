@@ -1,0 +1,40 @@
+{
+    "signs": [
+        {
+            "name": "aries"
+        },
+        {
+            "name": "taurus"
+        },
+        {
+            "name": "gemini"
+        },
+        {
+            "name": "cancer"
+        },
+        {
+            "name": "leo"
+        },
+        {
+            "name": "virgo"
+        },
+        {
+            "name": "libra"
+        },
+        {
+            "name": "scorpio"
+        },
+        {
+            "name": "sagittarius"
+        },
+        {
+            "name": "capricorn"
+        },
+        {
+            "name": "aquarius"
+        },
+        {
+            "name": "pisces"
+        }
+    ]
+}

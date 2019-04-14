@@ -1,0 +1,131 @@
+</body>
+</html>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style media="screen">
+      #profile, #logout{display: none}
+    </style>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '759817794222651',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.12'
+        });
+
+
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      function statusChangeCallback(response){
+        if(response.status === 'connected'){
+          setElements(true);
+          console.log('logged in');
+          testAPI();
+
+        }
+        else {
+          setElements(false);
+          console.log('no logged in');
+        }
+      }
+
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+
+      function testAPI(){
+
+          FB.api('/me?fields=name,taggable_friends.limit(2000){name,picture}',function(response){
+            if(response && !response.error){
+              // console.log(response);
+              buildProfile(response);
+            }
+          })
+      }
+
+      function buildProfile(user){
+        let friendsList = user.taggable_friends.data;
+        let friendsListString = "";
+        for (i = 0; i < friendsList.length; i++) {
+            friendsListString += "<img src="+ friendsList[i].picture.data.url + " title=" + friendsList[i].name + '>';
+        }
+
+        let profile = `
+          <h3>${user.name}</h3>
+          ${friendsListString}
+        `;
+        document.getElementById('profile').innerHTML =  profile;
+      }
+
+      function setElements(isLoggedIn){
+
+        if(isLoggedIn){
+          document.getElementById('logoutbtn').style.display = "block";
+          document.getElementById('profile').style.display = "block";
+          document.getElementById('fb-btn').style.display = "none";
+        }
+        else {
+          document.getElementById('logoutbtn').style.display = "none";
+          document.getElementById('profile').style.display = "none";
+          document.getElementById('fb-btn').style.display = "block";
+        }
+      }
+
+      function logout(){
+        FB.logout(function(response){
+          setElements(false);
+        })
+      }
+    </script>
+
+    <title>Friends wall</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="/auth">Home</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/confidentialite">confidentialite <span class="sr-only">(current)</span></a>
+          </li> -->
+        </ul>
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item">
+            <a id="logoutbtn" class="nav-link" href="" onclick="logout()">Se déconnecter<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br/>
+
+      <fb:login-button id="fb-btn"
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+      </fb:login-button>
+
+      <div id="profile">
+        <p>Logged into your profil</p>
+      </div>
+  </body>
+</html>
